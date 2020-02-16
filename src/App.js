@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import MyComponent from './MyComponent'
 
 class App extends Component {
   constructor(props){
@@ -8,30 +9,30 @@ class App extends Component {
     this.state = {
       title : 'App title'
     }
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
-  onSubmit(event) {
-    event.preventDefault();
-    console.log(this.input.value)
+  onClick(_event) {
+    this.setState({
+      title: 'New App title'
+    })
     // alert('submitted')
   }
 
   render(){
-    // const list = [
-    //   'Item 1',
-    //   'Item 2',
-    //   'Another item'
-    // ];
+
 
     return (
       <div className = 'App'>
         <h1>
           {this.state.title}
+          <div onClick = {this.onClick}>Click Here!</div>
         </h1>
-        <form onSubmit = {this.onSubmit}>
-          <input onChange = {this.onChange} ref = {input =>this.input = input}/>
-        </form>
+        <MyComponent 
+          title = {3}
+          name = 'The Anh'
+          onClick = {this.onClick}
+        />
       </div>
     )
   }
